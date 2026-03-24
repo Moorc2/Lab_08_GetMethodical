@@ -216,4 +216,53 @@ public class SafeInput {
         return retString;
     }
 
+    /**
+     * Prints a 60-character wide formatted header with the message centered on the middle line.
+     * Top and bottom lines are solid asterisks. Middle line has 3 asterisks on each end.
+     * @param msg the message to display centered in the header
+     */
+    public static void prettyHeader(String msg)
+    {
+        int totalWidth   = 60;
+        int borderStars  = 3;  // stars on each end of the middle line
+        int innerWidth   = totalWidth - (borderStars * 2); // 54 chars for message + padding
+        int totalPadding = innerWidth - msg.length();
+        int leftPadding  = totalPadding / 2;
+        int rightPadding = totalPadding - leftPadding; // handles odd-length messages
+
+        // Top border - 60 asterisks using a loop
+        for (int i = 0; i < totalWidth; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        // Middle line - 3 stars, left padding, message, right padding, 3 stars
+        for (int i = 0; i < borderStars; i++)
+        {
+            System.out.print("*");
+        }
+        for (int i = 0; i < leftPadding; i++)
+        {
+            System.out.print(" ");
+        }
+        System.out.print(msg);
+        for (int i = 0; i < rightPadding; i++)
+        {
+            System.out.print(" ");
+        }
+        for (int i = 0; i < borderStars; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        // Bottom border - 60 asterisks using a loop
+        for (int i = 0; i < totalWidth; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
 }
