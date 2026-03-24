@@ -115,4 +115,105 @@ public class SafeInput {
         return retVal;
     }
 
+    /**
+     * @param pipe   a Scanner opened to read from System.in
+     * @param prompt prompt for the user
+     * @param low    the inclusive lower bound of the valid range
+     * @param high   the inclusive upper bound of the valid range
+     * @return a valid double within the specified range
+     */
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        double retVal = 0;
+        boolean validInput = false;
+
+        do
+        {
+            System.out.print("\n" + prompt + " [" + low + " - " + high + "]: ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                if (retVal >= low && retVal <= high)
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    System.out.println("Input out of range. Please enter a value between " + low + " and " + high + ".");
+                }
+            }
+            else
+            {
+                System.out.println("That is not a valid decimal number. Please try again.");
+                pipe.next(); // read and discard the trash
+            }
+            pipe.nextLine(); // newline fix - clear the rest of the line
+        } while (!validInput);
+
+        return retVal;
+    }
+
+    /**
+     * @param pipe   a Scanner opened to read from System.in
+     * @param prompt prompt for the user
+     * @return true if the user enters Y or y, false if the user enters N or n
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        boolean retVal = false;
+        boolean validInput = false;
+
+        do
+        {
+            System.out.print("\n" + prompt + " [Y/N]: ");
+            String response = pipe.nextLine().trim();
+
+            if (response.equalsIgnoreCase("Y"))
+            {
+                retVal = true;
+                validInput = true;
+            }
+            else if (response.equalsIgnoreCase("N"))
+            {
+                retVal = false;
+                validInput = true;
+            }
+            else
+            {
+                System.out.println("Invalid response. Please enter Y or N.");
+            }
+        } while (!validInput);
+
+        return retVal;
+    }
+
+    /**
+     * @param pipe   a Scanner opened to read from System.in
+     * @param prompt prompt for the user
+     * @param regEx  the regular expression pattern the input must match
+     * @return a String that matches the given regular expression pattern
+     */
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retString = "";
+        boolean validInput = false;
+
+        do
+        {
+            System.out.print("\n" + prompt + ": ");
+            retString = pipe.nextLine().trim();
+
+            if (retString.matches(regEx))
+            {
+                validInput = true;
+            }
+            else
+            {
+                System.out.println("Invalid input. Please try again.");
+            }
+        } while (!validInput);
+
+        return retString;
+    }
+
 }

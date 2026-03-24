@@ -19,5 +19,25 @@ public class DevTest {
         // Test getRangedInt
         int ranged = SafeInput.getRangedInt(in, "Enter a number", 1, 10);
         System.out.println("You entered: " + ranged);
+
+        // Test getRangedDouble
+        double rangedDec = SafeInput.getRangedDouble(in, "Enter a decimal number", 0.5, 10.0);
+        System.out.println("You entered: " + rangedDec);
+
+        // Test getYNConfirm
+        boolean answer = SafeInput.getYNConfirm(in, "Do you want to continue");
+        System.out.println("You answered: " + answer);
+
+        // Test getRegExString - SSN pattern
+        String ssn = SafeInput.getRegExString(in, "Enter a SSN (###-##-####)", "^\\d{3}-\\d{2}-\\d{4}$");
+        System.out.println("SSN entered: " + ssn);
+
+        // Test getRegExString - UC Student M number
+        String mNum = SafeInput.getRegExString(in, "Enter your M number (M#####)", "^(M|m)\\d{5}$");
+        System.out.println("M number entered: " + mNum);
+
+        // Test getRegExString - menu choice
+        String menuChoice = SafeInput.getRegExString(in, "Enter a menu choice [O]pen [S]ave [V]iew [Q]uit", "^[OoSsVvQq]$");
+        System.out.println("Menu choice entered: " + menuChoice);
     }
 }
