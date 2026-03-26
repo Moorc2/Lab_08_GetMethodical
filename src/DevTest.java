@@ -9,7 +9,7 @@ public class DevTest {
         System.out.println("You entered: " + name);
 
         // Test getInt
-        int number = SafeInput.getInt(in, "Enter any integer");
+        int number = SafeInput.getInt(in, "Enter any integer number");
         System.out.println("You entered: " + number);
 
         // Test getDouble

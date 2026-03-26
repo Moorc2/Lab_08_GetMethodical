@@ -6,8 +6,8 @@ public class BirthDateTime
     {
         Scanner in = new Scanner(System.in);
 
-        int year    = SafeInput.getRangedInt(in, "Enter your birth year",  1950, 2015);
-        int month   = SafeInput.getRangedInt(in, "Enter your birth month", 1, 12);
+        int year    = SafeInput.getRangedInt(in, "Enter the year you were born",  1950, 2015);
+        int month   = SafeInput.getRangedInt(in, "Enter the month you were born", 1, 12);
 
         // Use a switch to determine the valid day range based on the month
         // Group 1: 31-day months  (Jan, Mar, May, Jul, Aug, Oct, Dec)
@@ -27,9 +27,9 @@ public class BirthDateTime
                 break;
         }
 
-        int day     = SafeInput.getRangedInt(in, "Enter your birth day",     1, maxDay);
-        int hour    = SafeInput.getRangedInt(in, "Enter your birth hour",    1, 24);
-        int minute  = SafeInput.getRangedInt(in, "Enter your birth minute",  1, 59);
+        int day     = SafeInput.getRangedInt(in, "Enter the day you were born",     1, maxDay);
+        int hour    = SafeInput.getRangedInt(in, "Enter the hour you were born",    1, 24);
+        int minute  = SafeInput.getRangedInt(in, "Enter the minute you were born",  1, 59);
 
         System.out.println("\nDate and Time of Birth:");
         System.out.printf("  %02d/%02d/%04d at %02d:%02d%n", month, day, year, hour, minute);
